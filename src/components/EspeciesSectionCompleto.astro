@@ -1,0 +1,319 @@
+---
+// Este archivo es `EspeciesSection.astro`, la sección que contiene todas las tarjetas de especies
+import EspecieCard from './EspecieCard.astro';
+
+// Define tus especies como un array de objetos
+const especies = [
+{
+    Clase: "Actinopterygii",
+    Nombre: "Gambusia affinis (Gambusia común)",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Pez de agua dulce, pequeño, adaptado a ambientes de humedales.",
+    Foto: "https://es.wikipedia.org/wiki/Gambusia_affinis#/media/File:Gambusia_affinis.jpg",
+    Links: "Wikipedia"
+  },
+  {
+    Clase: "Amphibia",
+    Nombre: "Pleurodema thaul (Sapito de cuatro ojos)",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Anfibio caracterizado por manchas que parecen ojos en su espalda, habita en áreas húmedas y zonas ribereñas.",
+    Foto: "https://www.curriculumnacional.cl/estudiante/621/articles-255411_recurso_pdf.pdf",
+    Links: "Curriculum Nacional"
+  },
+  {
+    Clase: "Amphibia",
+    Nombre: "Batrachyla taeniata (Rana de ceja)",
+    RCE: "NT",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Pequeña rana nativa de Chile, con una distintiva línea sobre los ojos, vive en zonas húmedas.",
+    Foto: "-",
+    Links: "-"
+  },
+  {
+    Clase: "Amphibia",
+    Nombre: "Calyptocephalella gayi (Rana chilena)",
+    RCE: "VU A2ad",
+    LeyConservación: "Vulnerable (VU)",
+    Descripción: "Rana robusta nativa de Chile, en peligro debido a la pérdida de hábitat.",
+    Foto: "https://es.wikipedia.org/wiki/Calyptocephalella_gayi#/media/File:Calyptocephalella_gayi.jpg",
+    Links: "Wikipedia"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Fulica armillata",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Ave acuática de plumaje oscuro y frente roja, que habita en cuerpos de agua dulce.",
+    Foto: "https://es.wikipedia.org/wiki/Fulica_armillata#/media/File:Fulica_armillata_1.jpg",
+    Links: "Wikipedia"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Fulica leucoptera",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Conocida como tagua común, habita en cuerpos de agua dulce y se caracteriza por su frente blanca.",
+    Foto: "https://es.wikipedia.org/wiki/Fulica_leucoptera#/media/File:Fulica_leucoptera.jpg",
+    Links: "Wikipedia"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Fulica rufifrons",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Ave acuática con frente roja, común en lagos y humedales.",
+    Foto: "https://es.wikipedia.org/wiki/Fulica_rufifrons#/media/File:Fulica_rufifrons.jpg",
+    Links: "Wikipedia"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Pardirallus sanguinolentus",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Rascón de tamaño mediano con plumaje oscuro, común en áreas pantanosas.",
+    Foto: "https://inaturalist.mma.gob.cl/taxa/290-Pardirallus-sanguinolentus",
+    Links: "iNaturalist"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Sephanoides sephaniodes (Picaflor chico)",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Colibrí pequeño, característico por su vuelo rápido, común en diversas zonas de Chile.",
+    Foto: "https://inaturalist.mma.gob.cl/taxa/73388-Sephanoides-sephaniodes",
+    Links: "iNaturalist"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Colaptes pitius",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Pájaro carpintero nativo de Chile, con plumaje marrón y pardo.",
+    Foto: "https://es.wikipedia.org/wiki/Colaptes_pitius#/media/File:Colaptes_pitius.jpg",
+    Links: "Wikipedia"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Charadrius modestus",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Pequeña ave playera con plumaje en tonos grises y marrones, común en zonas costeras.",
+    Foto: "https://es.wikipedia.org/wiki/Charadrius_modestus#/media/File:Charadrius_modestus.jpg",
+    Links: "Wikipedia"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Elanus leucurus",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Ave rapaz pequeña de color blanco y gris, que habita zonas abiertas.",
+    Foto: "https://inaturalist.mma.gob.cl/taxa/5277-Elanus-leucurus",
+    Links: "iNaturalist"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Parabuteo unicinctus",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Ave rapaz de tamaño mediano, común en diversos hábitats y conocida por su capacidad de caza en equipo.",
+    Foto: "https://inaturalist.mma.gob.cl/taxa/5355-Parabuteo-unicinctus",
+    Links: "iNaturalist"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Geranoaetus melanoleucus",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Halcón de gran tamaño, de plumaje blanco y negro, común en ambientes abiertos.",
+    Foto: "https://inaturalist.mma.gob.cl/taxa/5422-Geranoaetus-melanoleucus",
+    Link: "iNaturalist"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Ixobrychus involucris (Huairavillo)",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Pequeña garza que habita en pantanos y humedales, con plumaje marrón para camuflarse entre las plantas acuáticas.",
+    Foto: "https://clasificacionespecies.mma.gob.cl/wp-content/uploads/2019/10/Ixobrychus_involucris_12RCE_FIN.pdf",
+    Links: "MMA Chile"
+  },
+  {
+    Clase: "Mammalia",
+    Nombre: "Myocastor coypus (Coipo)",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Roedor acuático grande, con pelaje sedoso y patas con membranas natatorias.",
+    Foto: "https://www.sag.gob.cl/sites/default/files/Coipo.pdf",
+    Links: "SAG Chile"
+  },
+  {
+    Clase: "Actinopterygii",
+    Nombre: "Cyprinus carpio (Carpa común)",
+    RCE: "VU",
+    LeyConservación: "Vulnerable (VU)",
+    Descripción: "Pez de agua dulce con cuerpo alargado y grandes escamas, común en lagos y ríos.",
+    Foto: "https://www.mapa.gob.es/es/ministerio/servicios/informacion/carpa_tcm30-102426.pdf",
+    Links: "MAPA España"
+  },
+  {
+    Clase: "Liliopsida",
+    Nombre: "Typha domingensis",
+    RCE: "-",
+    LeyConservación: "-",
+    Descripción: "Planta acuática perenne, con hojas largas y lineales, flores dispuestas en inflorescencias cilíndricas.",
+    Foto: "https://herbarivirtual.uib.es/es/general/626/especie/typha-domingensis-pers-",
+    Links: "Herbari Virtual"
+  },
+  {
+    Clase: "Magnoliopsida",
+    Nombre: "Erodium cicutarium (Alfilerillo)",
+    RCE: "-",
+    LeyConservación: "-",
+    Descripción: "Planta herbácea anual o bienal, con hojas divididas y flores rosadas, común en zonas abiertas y caminos.",
+    Foto: "https://sib.gob.ar/especies/erodium-cicutarium",
+    Links: "SiB Argentina"
+  },
+  {
+    Clase: "Magnoliopsida",
+    Nombre: "Bellis perennis (Margarita de los prados)",
+    RCE: "-",
+    LeyConservación: "-",
+    Descripción: "Planta perenne de flores blancas con centros amarillos, común en zonas de pasto y praderas.",
+    Foto: "https://www.anasacjardin.cl/cuidado-del-pasto/problemas-en-el-pasto/malezas-de-hoja-ancha/margarita-de-los-prados-bellis-perenne/",
+    Links: "Anasac"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Charadrius modestus",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Pequeña ave playera con plumaje en tonos grises y marrones, común en zonas costeras.",
+    Foto: "https://es.wikipedia.org/wiki/Charadrius_modestus#/media/File:Charadrius_modestus.jpg",
+    Links: "Wikipedia"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Elanus leucurus",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Ave rapaz pequeña de color blanco y gris, que habita zonas abiertas.",
+    Foto: "https://inaturalist.mma.gob.cl/taxa/5277-Elanus-leucurus",
+    Links: "iNaturalist"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Parabuteo unicinctus",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Ave rapaz de tamaño mediano, común en diversos hábitats y conocida por su capacidad de caza en equipo.",
+    Foto: "https://inaturalist.mma.gob.cl/taxa/5355-Parabuteo-unicinctus",
+    Links: "iNaturalist"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Geranoaetus melanoleucus",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Halcón de gran tamaño, de plumaje blanco y negro, común en ambientes abiertos.",
+    Foto: "https://inaturalist.mma.gob.cl/taxa/5422-Geranoaetus-melanoleucus",
+    Links: "iNaturalist"
+  },
+  {
+    Clase: "Aves",
+    Nombre: "Ixobrychus involucris (Huairavillo)",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Pequeña garza que habita en pantanos y humedales, con plumaje marrón para camuflarse entre las plantas acuáticas.",
+    Foto: "https://clasificacionespecies.mma.gob.cl/wp-content/uploads/2019/10/Ixobrychus_involucris_12RCE_FIN.pdf",
+    Links: "MMA Chile"
+  },
+  {
+    Clase: "Mammalia",
+    Nombre: "Myocastor coypus (Coipo)",
+    RCE: "-",
+    LeyConservación: "Preocupación Menor (LC)",
+    Descripción: "Roedor acuático grande, con pelaje sedoso y patas con membranas natatorias.",
+    Foto: "https://www.sag.gob.cl/sites/default/files/Coipo.pdf",
+    Links: "SAG Chile"
+  },
+  {
+    Clase: "Actinopterygii",
+    Nombre: "Cyprinus carpio (Carpa común)",
+    RCE: "VU",
+    LeyConservación: "Vulnerable (VU)",
+    Descripción: "Pez de agua dulce con cuerpo alargado y grandes escamas, común en lagos y ríos.",
+    Foto: "https://www.mapa.gob.es/es/ministerio/servicios/informacion/carpa_tcm30-102426.pdf",
+    Links: "MAPA España"
+  },
+  {
+    Clase: "Liliopsida",
+    Nombre: "Typha domingensis",
+    RCE: "-",
+    LeyConservación: "-",
+    Descripción: "Planta acuática perenne, con hojas largas y lineales, flores dispuestas en inflorescencias cilíndricas.",
+    Foto: "https://herbarivirtual.uib.es/es/general/626/especie/typha-domingensis-pers-",
+    Links: "Herbari Virtual"
+  },
+  {
+    Clase: "Magnoliopsida",
+    Nombre: "Erodium cicutarium (Alfilerillo)",
+    RCE: "-",
+    LeyConservación: "-",
+    Descripción: "Planta herbácea anual o bienal, con hojas divididas y flores rosadas, común en zonas abiertas y caminos.",
+    Foto: "https://sib.gob.ar/especies/erodium-cicutarium",
+    Links: "SiB Argentina"
+  },
+  {
+    Clase: "Magnoliopsida",
+    Nombre: "Bellis perennis (Margarita de los prados)",
+    RCE: "-",
+    LeyConservación: "-",
+    Descripción: "Planta perenne de flores blancas con centros amarillos, común en zonas de pasto y praderas.",
+    Foto: "https://www.anasacjardin.cl/cuidado-del-pasto/problemas-en-el-pasto/malezas-de-hoja-ancha/margarita-de-los-prados-bellis-perenne/",
+    Links: "Anasac"
+  }
+  // Agrega más especies según sea necesario
+];
+---
+<section id="especies">
+  <h2>Especies del Humedal</h2>
+  <div class="especies-container">
+    {especies.map(especie => (
+      <EspecieCard {...especie} />
+    ))}
+  </div>
+</section>
+
+<style>
+  #especies {
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  .especies-container {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory; /* Snap scrolling for smooth experience */
+  }
+
+  .especies-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .especies-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+  }
+
+  .especies-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Opcional: Efecto de "snap" para cada tarjeta */
+  .especie-card {
+    scroll-snap-align: start;
+  }
+</style>

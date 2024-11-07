@@ -1,0 +1,55 @@
+---
+const { title, description, imageUrl } = Astro.props;
+---
+
+<div class="simple-card">
+  <div class="image" style={`background-image: url(${imageUrl})`}></div>
+  <div class="content">
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </div>
+</div>
+
+<style>
+.simple-card {
+  display: flex;
+  align-items: center;
+  margin: 1rem auto;
+  padding: 1rem;
+  box-shadow: 0 3px 7px -1px rgba(0, 0, 0, .1);
+  border-radius: 5px;
+  background: #fff;
+  max-width: 1000px;
+  transition: box-shadow 0.3s;
+}
+
+.simple-card:hover {
+  box-shadow: 0 5px 10px -1px rgba(0, 0, 0, .2);
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.content p {
+  font-size: 1rem;
+  color: #666;
+}
+
+</style>

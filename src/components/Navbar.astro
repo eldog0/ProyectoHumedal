@@ -1,0 +1,73 @@
+<!-- Navbar -->
+<nav class="navbar navbar-transparent">
+  <div class="navbar-content">
+    <h1 class="logo">Humedal San Pedro</h1>
+    <ul class="nav-links">
+      <li><a href="#hero">Inicio</a></li>
+      <li><a href="#map">Mapa</a></li>
+      <li><a href="#flora-fauna">Flora y Fauna</a></li>
+      <li><a href="#news">Noticias</a></li>
+      <li><a href="#conservation">Conservación</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+.navbar-transparent {
+  background-color: transparent; /* Navbar completamente transparente */
+}
+.navbar-solid {
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo sólido */
+}
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo {
+  color: white;
+  font-size: 1.5rem;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover {
+  color: #4CAF50; /* Cambia según tu preferencia */
+}
+</style>
+
+<script>
+// Script para cambiar el fondo de la navbar al pasar la sección del hero
+window.addEventListener('scroll', () => {
+  const navbar = document.querySelector('.navbar');
+  const heroSection = document.getElementById('hero');
+  
+  // Detectar cuando el usuario ha pasado la altura del hero
+  if (window.scrollY > heroSection.offsetHeight) {
+    navbar.classList.add('navbar-solid');
+    navbar.classList.remove('navbar-transparent');
+  } else {
+    navbar.classList.add('navbar-transparent');
+    navbar.classList.remove('navbar-solid');
+  }
+});
+</script>

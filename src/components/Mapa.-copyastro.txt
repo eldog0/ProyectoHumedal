@@ -1,0 +1,80 @@
+---
+const images = [
+  { src: "https://example.com/photo1.jpg", alt: "Zona de aves migratorias" },
+  { src: "https://example.com/photo2.jpg", alt: "Área de flora nativa" },
+  { src: "https://example.com/photo3.jpg", alt: "Lago principal" },
+];
+let currentSlide = 0;
+
+function moveSlide(direction: number) {
+  const slides = document.querySelectorAll('.carousel-slide');
+  const totalSlides = slides.length;
+  currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+
+  // Type assertion to tell TypeScript that 'track' is an HTMLElement with a style property
+  const track = document.querySelector('.carousel-track') as HTMLElement;
+  track.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+---
+<div class="carousel">
+  <button class="carousel-arrow left" onClick={() => moveSlide(-1)}>&#10094;</button>
+  
+  <div class="carousel-track">
+    {images.map((image, index) => (
+      <div class="carousel-slide" data-index={index}>
+        <img src={image.src} alt={image.alt} class="carousel-image" />
+      </div>
+    ))}
+  </div>
+  
+  <button class="carousel-arrow right" onClick={() => moveSlide(1)}>&#10095;</button>
+</div>
+
+<style>
+  .carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    transition: opacity 0.3s ease;
+  }
+
+  .carousel-image {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .left {
+    left: 10px;
+  }
+
+  .right {
+    right: 10px;
+  }
+</style>
+

@@ -1,0 +1,68 @@
+---
+// Este archivo es `EspecieCard.astro`, representando una tarjeta de especie
+const { Nombre, Descripción, Foto } = Astro.props;
+---
+<div class="especie-card">
+  <div class="image-container">
+    <img src={Foto} alt={"especie"} class="especie-image" />
+  </div>
+  <div class="text-container">
+    <h3 class="especie-name">{Nombre}</h3>
+    <p class="especie-description">{Descripción}</p>
+  </div>
+</div>
+
+<style>
+  .especie-card {
+    display: flex;
+    width: 200px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin: 0 10px;
+    position: relative;
+    overflow: hidden;
+    transition: width 0.3s ease;
+  }
+
+  .image-container {
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .especie-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  .text-container {
+    padding-left: 1rem;
+  }
+
+  .especie-name {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0.5rem 0;
+  }
+
+  /* Descripción oculta inicialmente */
+  .especie-description {
+    display: none;
+    font-size: 0.9rem;
+    color: #666;
+    padding-top: 0.5rem;
+  }
+
+  /* Expande la tarjeta hacia la derecha y muestra la descripción al hacer hover */
+  .especie-card:hover {
+    width: 300px; /* Nueva anchura al expandirse */
+  }
+
+  .especie-card:hover .especie-description {
+    display: block;
+  }
+</style>

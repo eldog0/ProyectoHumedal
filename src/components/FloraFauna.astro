@@ -1,0 +1,41 @@
+---
+// FloraFauna.astro
+const species = [
+  { name: 'Especie 1', description: 'Descripción de la especie 1.', image: '/path/to/image1.jpg' },
+  { name: 'Especie 2', description: 'Descripción de la especie 2.', image: '/path/to/image2.jpg' },
+  // Agrega más especies según sea necesario
+];
+---
+<section class="flora-fauna">
+  <h2>Explora la Flora y Fauna</h2>
+  <div class="species-list">
+    {species.map(specie => (
+      <div class="species-card">
+        <img src={specie.image} alt={specie.name} />
+        <h3>{specie.name}</h3>
+        <p>{specie.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .flora-fauna {
+    padding: 2rem;
+  }
+  .species-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .species-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+  }
+  .species-card img {
+    width: 100%;
+    height: auto;
+  }
+</style>
